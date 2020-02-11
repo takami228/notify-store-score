@@ -1,0 +1,17 @@
+{
+  "name": "daily-notify-store-score",
+  "version": "1.0.0",
+  "description": "notify your application's scores distributed in Google Play Store and App Store to Slack and Mattermost.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "takami228",
+  "license": "MIT",
+  "dependencies": {
+    "app-store-scraper": "^0.16.2",
+    "dateformat": "^3.0.3",
+    "dotenv": "^8.2.0",
+    "google-play-scraper": "^7.1.1"
+  }
+}
