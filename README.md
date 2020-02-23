@@ -38,7 +38,7 @@ Install packages and run apps.
 
 ```
 # install packages
-$ package install
+$  install
 
 # run
 $ node app.js
