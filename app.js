@@ -70,6 +70,12 @@ function constructPostText(dialect, appScores){
     return text;   
 }
 
+function calcIosRating(ratings){
+    return (1*ratings['histogram']['1'] + 2*ratings['histogram']['2']
+    + 3*ratings['histogram']['3'] + 4*ratings['histogram']['4']
+    + 5*ratings['histogram']['5']) / ratings['ratings']; 
+}
+
 const androidAppId = process.env.ANDROID_APP_ID;
 const iosAppId = process.env.IOS_APP_ID;
 const dialect = process.env.DIALECT;
@@ -78,17 +84,17 @@ const username = process.env.USERNAME;
 const channel = process.env.CHANNEL;
 
 const androidReview = googlePlay.app({appId: androidAppId, country: 'jp'})
-const iosReview = appStore.app({id: iosAppId, country: 'jp'});
+const iosRatings = appStore.ratings({id: iosAppId, country: 'jp'});
 
-Promise.all([androidReview, iosReview]).then(function(values){
+Promise.all([androidReview, iosRatings]).then(function(values){
     const appScores = {
         'android' :  {
             'score' : values[0]['score'],
             'reviews' : values[0]['reviews']
         },
         'ios' : {
-            'score' : values[1]['score'],
-            'reviews' : values[1]['reviews']
+            'score' : calcIosRating(values[1]),
+            'reviews' : values[1]['ratings']
         }
     };
     const text = constructPostText(dialect, appScores);
