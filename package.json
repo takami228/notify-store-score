@@ -9,9 +9,9 @@
   "author": "takami228",
   "license": "MIT",
   "dependencies": {
-    "app-store-scraper": "^0.16.2",
+    "app-store-scraper": "^0.16.3",
     "dateformat": "^3.0.3",
     "dotenv": "^8.2.0",
-    "google-play-scraper": "^7.1.1"
+    "google-play-scraper": "^7.1.3"
   }
 }
